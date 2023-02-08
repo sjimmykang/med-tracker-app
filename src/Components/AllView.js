@@ -123,7 +123,7 @@ const AllView = () => {
     }, []);
 
     return (
-        <div>
+        <div className='allView'>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='medicine'>Add a new medicine to track</label>
                 <div className='inputContainer'>

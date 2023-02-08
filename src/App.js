@@ -27,6 +27,10 @@ function App() {
                 <Route path='*' element={ <ErrorPage />} />
                     
             </Routes>
+
+            <footer>
+                <p>created in 2023 by Jimmy Kang</p>
+            </footer>
         </div>
     );
 }

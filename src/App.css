@@ -135,6 +135,9 @@ a p:focus {
   border-bottom: 2px solid black;
 }
 
+.allView {
+  margin-bottom: 3rem;
+}
 
 .today {
   color: rgb(180, 7, 193);
@@ -178,4 +181,9 @@ a p:focus {
 .sectionHeadings p {
   margin-bottom: 0.5rem;
 
+}
+
+footer {
+  margin: 1rem;
+  text-align: center;
 }
