@@ -143,7 +143,7 @@ const AllView = () => {
             <ol className='quickview'>
                 <li className='sectionHeadings'>Dates</li>
                 {
-                    pastDates.map( day => {
+                    pastDates.map( (day, index) => {
                         /* mdn to get month and day of the week: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString */
                         const dayArray = day.toDateString().split(' ');
                         // const dayString = `${dayArray[0]} ${dayArray[1]} ${dayArray[2]}`
@@ -152,9 +152,10 @@ const AllView = () => {
 
                         return (
                             /* different class to indicate today column better */
+                            
                             <li 
                                 key={`pastDates-${pastDates.indexOf(day)}`}
-                                className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? 'today singles' : 'singles'}    
+                                className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? `pastday${index} today singles` : `pastday${index} singles`}    
                             >
                                 <p>{dayArray[0]}</p>
                                 <p>{`${dayArray[1]} ${dayArray[2]}`}</p>
@@ -178,7 +179,7 @@ const AllView = () => {
                                 </button>
                             </li>
                             {
-                                pastDates.map( day => {
+                                pastDates.map( (day, index) => {
                                     const thisDay = day.toDateString();
                                     let dayCheck = -1;
                                     if (med.datesShort.indexOf(thisDay) !== undefined) {
@@ -187,7 +188,7 @@ const AllView = () => {
                                     
                                     if (pastDates.indexOf(day) === (pastDates.length - 1)) {
                                         return (
-                                            <li key={`med-pastDates-${pastDates.indexOf(day)}`} className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? 'today singles' : 'singles'}>
+                                            <li key={`med-pastDates-${pastDates.indexOf(day)}`} className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? `pastday${index} today singles` : `pastday${index} singles`}>
                                                 {
                                                     (dayCheck !== -1) ?
                                                         <p>{med.datesTime}</p>
