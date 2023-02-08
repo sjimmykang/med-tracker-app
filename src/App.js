@@ -1,10 +1,4 @@
-// Modules
-import { Routes, Route } from 'react-router-dom'
-// Components
-import AllView from './Components/AllView';
-import Medicine from './Components/Medicine';
-import ErrorPage from './Components/ErrorPage';
-// Assets
+import logo from './logo.svg';
 import './App.css';
 
 function App() {
