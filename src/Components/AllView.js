@@ -31,7 +31,7 @@ const AllView = () => {
         const database = getDatabase(firebase);
         const dbRef = ref(database, `${med.key}`);
         const todayFull = new Date();
-        console.log(todayFull)
+        // console.log(todayFull)
         const todayShort = todayFull.toDateString();
 
         // const full = med.datesFull.unshift(todayFull);
@@ -102,7 +102,8 @@ const AllView = () => {
                         datesFull: [], datesShort: [] 
                     })
                 } else {
-                    newState.push({ key: key, 
+                    newState.push({ 
+                        key: key, 
                         name: data[key].name, 
                         datesFull: data[key].datesFull, 
                         datesShort: data[key].datesShort 
@@ -140,6 +141,8 @@ const AllView = () => {
                         /* mdn to get month and day of the week: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString */
                         const dayArray = day.toDateString().split(' ');
                         const dayString = `${dayArray[0]} ${dayArray[1]} ${dayArray[2]}`
+                        // console.log('full ',day)
+                        // console.log('short ', day.toDateString())
 
                         return (
                             /* different class to indicate today column better */
@@ -160,7 +163,7 @@ const AllView = () => {
                     return (
                         <ul key={`med-${med.key}`} className='quickview'>
                             <li key={med.key}>
-                                <Link to={`/${med.key}`}>
+                                <Link to={`/medicine/${med.key}`} handleTaken={handleTaken} med={med} >
                                     <p>{med.name}</p>
                                 </Link>
                                 <button onClick={() => handleRemoveMed(med.key)} className='red-text'>
@@ -184,6 +187,13 @@ const AllView = () => {
                                     if (pastDates.indexOf(day) === (pastDates.length - 1)) {
                                         return (
                                             <li key={`med-pastDates-${pastDates.indexOf(day)}`} className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? 'today' : null}>
+                                                {/* {
+                                                   
+                                                        <button onClick={() => handleTaken(med)}>
+                                                            <p className='sr-only'>click if taken</p>
+                                                            taken?
+                                                        </button>
+                                                } */}
                                                 {
                                                     (dayCheck !== -1) ?
                                                         <p>yeah</p>
