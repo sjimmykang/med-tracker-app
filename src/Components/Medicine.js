@@ -41,7 +41,6 @@ const Medicine = () => {
             // console.log(oneMed);
             setMed(oneMed.val());
         }
-        
         getMedDetail();
     }, [medKey]);
 
