@@ -1,10 +1,8 @@
 // Modules
-import firebase from './firebase';
-import { getDatabase, push, remove, ref, onValue } from 'firebase/database';
-import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom'
 // Components
-import Form from './Components/Form';
+import AllView from './Components/AllView';
+import Medicine from './Components/Medicine';
 // Assets
 import './App.css';
 
@@ -19,12 +17,16 @@ function App() {
             <header>
                 <h1>Med Tracker</h1>
                 <p>Save your energy, let this track for you</p>
+                <p>one daily tracking per med. if multiple times a day, create multiple med to track (eg: VitC-Morning, VitC-Evening)</p>
             </header>
 
             <Routes>
                 <Route path='/' element={ 
-                    <Form />
+                    <AllView />
                 } />
+                <Route path='/medicine/:medkey' element={<Medicine />}>
+                    
+                </Route>
             </Routes>
         </div>
     );

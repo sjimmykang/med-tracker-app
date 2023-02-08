@@ -49,3 +49,17 @@ button {
 .today {
   color: rgb(180, 7, 193);
 }
+
+.red-text {
+  color: red;
+}
+
+.quickview {
+  display: flex;
+  flex-direction: row;
+}
+
+.med-quickview {
+  display: flex;
+  flex-direction: column;
+}
