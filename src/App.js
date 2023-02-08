@@ -29,7 +29,7 @@ function App() {
             </Routes>
 
             <footer>
-                <p>created in 2023 by Jimmy Kang</p>
+                <p>Created at <a href='https://junocollege.com/'>Juno College</a> in 2023 by Jimmy Kang</p>
             </footer>
         </div>
     );

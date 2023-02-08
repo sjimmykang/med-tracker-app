@@ -188,6 +188,10 @@ footer {
   text-align: center;
 }
 
+footer a {
+  border-bottom: 1px solid black;
+}
+
 /* Media Queries styling */
 
 @media (max-width: 700px) {
@@ -210,6 +214,11 @@ footer {
   .pastday0,
   .pastday1 {
     display: none;
+  }
+
+  footer p,
+  footer a {
+    font-size: 0.8rem;
   }
 }
 
