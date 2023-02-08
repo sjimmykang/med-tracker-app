@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import firebase from '../firebase';
 import { getDatabase, get, ref, update } from 'firebase/database';
 
-const Medicine = ({ handleTaken }) => {
+const Medicine = () => {
     const { medKey } = useParams();
     const [med, setMed] = useState({});
     const { name, datesShort, datesFull } = med;
@@ -18,8 +18,6 @@ const Medicine = ({ handleTaken }) => {
     const handleRemoveDate = index => {
         const database = getDatabase(firebase);
         const dbRef = ref(database, `${medKey}`);
-        // setMed(oneMed.val());
-        // console.log(oneMed.val().datesShort[1])
         const updates = {};
         updates.datesFull = [...med.datesFull];
         updates.datesFull.splice(index, 1);
