@@ -33,6 +33,7 @@ const AllView = () => {
         const todayFull = new Date();
         // console.log(todayFull)
         const todayShort = todayFull.toDateString();
+        const todayTime = todayFull.toLocaleTimeString();
 
         // const full = med.datesFull.unshift(todayFull);
         // const short = med.datesShort.unshift(todayShort);
@@ -41,6 +42,8 @@ const AllView = () => {
         updates.datesFull.unshift(todayFull);
         updates.datesShort = [...med.datesShort];
         updates.datesShort.unshift(todayShort);
+        updates.datesTime = [...med.datesTime];
+        updates.datesTime.unshift(todayTime);
         // console.log(updates.datesFull);
         // console.log(updates.datesShort);
         // console.log(med)
@@ -99,14 +102,17 @@ const AllView = () => {
                     newState.push({ 
                         key: key, 
                         name: data[key].name, 
-                        datesFull: [], datesShort: [] 
+                        datesFull: [], 
+                        datesShort: [],
+                        datesTime: []
                     })
                 } else {
                     newState.push({ 
                         key: key, 
                         name: data[key].name, 
                         datesFull: data[key].datesFull, 
-                        datesShort: data[key].datesShort 
+                        datesShort: data[key].datesShort,
+                        datesTime:  data[key].datesTime
                     })
 
                 }
@@ -184,7 +190,7 @@ const AllView = () => {
                                             <li key={`med-pastDates-${pastDates.indexOf(day)}`} className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? 'today singles' : 'singles'}>
                                                 {
                                                     (dayCheck !== -1) ?
-                                                        <p>Yes</p>
+                                                        <p>{med.datesTime}</p>
                                                         :
                                                         <button onClick={() => handleTaken(med)}>
                                                             <p className='sr-only'>click if taken</p>
@@ -198,7 +204,7 @@ const AllView = () => {
                                             <li className='singles' key={`med-pastDates-${pastDates.indexOf(day)}`}>
                                                 {
                                                     (dayCheck !== -1) ? 
-                                                        <p>Yes</p> :
+                                                        <p>{med.datesTime}</p> :
                                                         <p></p>
                                                 }
                                             </li>
