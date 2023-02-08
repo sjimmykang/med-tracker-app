@@ -1,38 +1,25 @@
-// Modules
-import { Routes, Route } from 'react-router-dom'
-// Components
-import AllView from './Components/AllView';
-import Medicine from './Components/Medicine';
-import ErrorPage from './Components/ErrorPage';
-// Assets
+import logo from './logo.svg';
 import './App.css';
 
 function App() {
-    
-
-
-
-
-    return (
-        <div className="App">
-
-            <Routes>
-                <Route path='/' element={ 
-                    <>
-                        <header>
-                            <h1>Med Tracker</h1>
-                            <p>Save your energy, let this track for you</p>
-                            <p>one daily tracking per med. if multiple times a day, create multiple med to track (eg: VitC-Morning, VitC-Evening)</p>
-                        </header>
-                        <AllView /> 
-                    </>
-                } />
-                <Route path='/medicine/:medKey' element={ <Medicine />} />
-                <Route path='*' element={ <ErrorPage />} />
-                    
-            </Routes>
-        </div>
-    );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
 export default App;
