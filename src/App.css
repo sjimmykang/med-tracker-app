@@ -62,10 +62,25 @@ body {
 
 /* End of basic styling */
 
+.errorPageLink {
+  display: flex;
+  justify-content: center;
+}
+
+.errorPageLink h2 {
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.4s;
+}
+
+.errorPageLink h2:hover,
+.errorPageLink h2:focus {
+  border-bottom: 2px solid black;
+}
+
 h1 {
   font-size: 3rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 h2 {
@@ -75,12 +90,17 @@ h2 {
 }
 
 header {
-  margin: 3rem auto;
+  margin: 2.5rem auto;
   width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
+}
+
+header p {
+  line-height: 1.3rem;
+  margin-bottom: 0.5rem;
 }
 
 form {
@@ -99,40 +119,44 @@ label {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
+  width: calc(100% - 0.5rem);
+  margin: 0;
 }
 
 .inputContainer button {
   padding: 0.2rem;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
+  width: 30%;
 }
 
 input {
   display: flex;
+  width: 70%;
   justify-content: flex-start;
+  margin-top: 0.5rem;
   margin-left: 0.5rem;
   padding: .25rem 0.5rem;
 }
 
 button {
+  margin-top: 0.5rem;
   padding: 0.1rem;
   cursor: pointer;
-  border: 3px solid pink;
+  border: 3px solid black;
+  transition: all 0.4s;
+  -webkit-box-shadow: 3px 3px 1px 1px #2A2A2A;
+  box-shadow: 3px 3px 1px 1px #2A2A2A;
+}
+
+button:focus,
+button:hover {
+  border: 3px solid #007BFF;
+  -webkit-box-shadow: 3px 3px 1px 1px #007BFF;
+  box-shadow: 3px 3px 1px 1px #007BFF;
 }
 
 a {
-  color: #2c2c2c;
-}
-
-a p {
-  border-bottom: 2px solid transparent;
-  transition: border-bottom 0.4s;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-a p:hover,
-a p:focus {
-  border-bottom: 2px solid black;
+  color: black;
 }
 
 .allView {
@@ -140,8 +164,9 @@ a p:focus {
 }
 
 .today {
-  color: rgb(180, 7, 193);
+  color: #007BFF;
   display: flex;
+  font-weight: 600;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -176,16 +201,43 @@ a p:focus {
   font-weight: 600;
   font-size: 1.5rem;
   width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .sectionHeadings p {
-  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 0.5rem auto;
+  transition: all 0.4s;
+  -webkit-box-shadow: 3px 3px 1px 1px transparent;
+  box-shadow: 3px 3px 1px 1px transparent;
+  border: 2px solid black;
+}
 
+.sectionHeadings p:focus,
+.sectionHeadings p:hover {
+-webkit-box-shadow: 3px 3px 1px 1px #007BFF;
+box-shadow: 3px 3px 1px 1px #007BFF;
+border: 2px solid #007BFF;
+}
+
+.sectionHeadings button {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
 }
 
 footer {
   margin: 1rem;
   text-align: center;
+}
+
+footer a {
+  border-bottom: 1px solid black;
 }
 
 /* Media Queries styling */
@@ -213,7 +265,7 @@ footer {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .pastday2 {
     display: none;
   }

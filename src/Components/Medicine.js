@@ -1,9 +1,9 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import firebase from '../firebase';
 import { getDatabase, get, ref, update } from 'firebase/database';
 
-const Medicine = () => {
+const Medicine = (props) => {
     const { medKey } = useParams();
     const [med, setMed] = useState({});
     const { name, datesShort } = med;
@@ -39,7 +39,8 @@ const Medicine = () => {
         const getMedDetail = async () => {
             const database = getDatabase(firebase);
             const oneMed = await get(ref(database, `${medKey}`));
-            // console.log(oneMed);
+            // console.log(oneMed.val());
+            // (oneMed.val()) ? setMed(oneMed.val()) : <Redirect to='/Error' />;
             setMed(oneMed.val());
         }
         getMedDetail();

@@ -8,7 +8,6 @@ import Medicine from './Components/Medicine';
 import './App.css';
 
 function App() {
-    
     return (
         <div className="wrapper">
             <Routes>
@@ -17,7 +16,8 @@ function App() {
                         <header>
                             <h1>Med Tracker</h1>
                             <p>Save your energy, let this track for you</p>
-                            <p>one daily tracking per med. if multiple times a day, create multiple med to track (eg: VitC-Morning, VitC-Evening)</p>
+                            <p>one daily tracking per med</p>
+                            <p>for multiple times a day, create multiple of the meds needed</p>
                         </header>
                         <AllView /> 
                     </>
@@ -27,7 +27,7 @@ function App() {
             </Routes>
 
             <footer>
-          <p>Created at Juno College in 2023 by Jimmy Kang</p>
+          <p>Created at <a href='https://junocollege.com/'>Juno College</a> in 2023 by Jimmy Kang</p>
             </footer>
         </div>
     );

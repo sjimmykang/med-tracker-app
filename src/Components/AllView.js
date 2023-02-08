@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import firebase from '../firebase';
 import { getDatabase, push, ref, onValue, update, remove } from 'firebase/database';
 import { Link } from 'react-router-dom';
@@ -30,8 +30,12 @@ const AllView = () => {
         const database = getDatabase(firebase);
         const dbRef = ref(database, `${med.key}`);
         const todayFull = new Date();
+        /* split today's time into string then only grab hr, min, am/pm that i need */
         const todayShort = todayFull.toDateString();
-        const todayTime = todayFull.toLocaleTimeString();
+        const todayTimeArr = todayFull.toLocaleTimeString().split(':');
+        const todayTimeLastIndex = todayTimeArr[2];
+        const todayTime = `${todayTimeArr[0]}:${todayTimeArr[1]} ${todayTimeLastIndex[todayTimeLastIndex.length-2]}${todayTimeLastIndex[todayTimeLastIndex.length-1]}`
+        console.log(todayTime)
         const updates = {};
         updates.datesFull = [...med.datesFull];
         updates.datesFull.unshift(todayFull);

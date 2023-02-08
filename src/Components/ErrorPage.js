@@ -6,8 +6,8 @@ const ErrorPage = () => {
         <div>
             <h1>404! Error. page does not exist</h1>
 
-            <Link to={`/`}>
-                <h2>Back</h2>
+            <Link to={`/`} className='errorPageLink' >
+                <h2>Back to main</h2>
             </Link>
         </div>
     )
