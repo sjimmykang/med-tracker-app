@@ -11,7 +11,6 @@ function App() {
     
     return (
         <div className="wrapper">
-
             <Routes>
                 <Route path='/' element={ 
                     <>
@@ -24,8 +23,7 @@ function App() {
                     </>
                 } />
                 <Route path='/medicine/:medKey' element={ <Medicine />} />
-                <Route path='*' element={ <ErrorPage />} />
-                    
+                <Route path='*' element={ <ErrorPage />} />      
             </Routes>
 
             <footer>

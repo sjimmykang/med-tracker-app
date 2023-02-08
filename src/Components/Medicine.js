@@ -6,6 +6,7 @@ import { getDatabase, get, ref, update } from 'firebase/database';
 const Medicine = () => {
     const { medKey } = useParams();
     const [med, setMed] = useState({});
+    const { name, datesShort } = med;
     
     /* info to use firebase get function from: https://stackoverflow.com/questions/71244451/angular-returning-a-value-from-onvalue-in-firebase-realtime-database */
     const getOneMed = async () => {
@@ -44,9 +45,6 @@ const Medicine = () => {
         getMedDetail();
     }, [medKey]);
 
-    const { name, datesShort } = med;
-
-
     if (datesShort) {        
             return (
                 <div>
@@ -57,8 +55,8 @@ const Medicine = () => {
                             datesShort.map((day, index) => {
                                 return(
                                 <li key={`${day}-${index}`}>
-                                        <p>{day} {med.datesTime}</p>
-                                        <button onClick={() => handleRemoveDate(index)}>Remove this date</button>
+                                    <p>{day} {med.datesTime}</p>
+                                    <button onClick={() => handleRemoveDate(index)}>Remove this date</button>
                                 </li>
                                 )
                             })
@@ -84,7 +82,6 @@ const Medicine = () => {
             </div>
         )
     }
-
 }
 
 export default Medicine;

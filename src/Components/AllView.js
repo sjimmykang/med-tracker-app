@@ -27,16 +27,11 @@ const AllView = () => {
     }
 
     const handleTaken = med => {
-        // console.log(med);
         const database = getDatabase(firebase);
         const dbRef = ref(database, `${med.key}`);
         const todayFull = new Date();
-        // console.log(todayFull)
         const todayShort = todayFull.toDateString();
         const todayTime = todayFull.toLocaleTimeString();
-
-        // const full = med.datesFull.unshift(todayFull);
-        // const short = med.datesShort.unshift(todayShort);
         const updates = {};
         updates.datesFull = [...med.datesFull];
         updates.datesFull.unshift(todayFull);
@@ -44,9 +39,6 @@ const AllView = () => {
         updates.datesShort.unshift(todayShort);
         updates.datesTime = [...med.datesTime];
         updates.datesTime.unshift(todayTime);
-        // console.log(updates.datesFull);
-        // console.log(updates.datesShort);
-        // console.log(med)
 
         update(dbRef, updates).then(() => {
             console.log("Data updated");
@@ -77,11 +69,9 @@ const AllView = () => {
             const day = new Date();
             day.setDate(day.getDate() - index);
             pastView.unshift(day);
-
         }
         // console.log(pastView);
         setPastDates(pastView);
-
 
         // variable to hold our database detail
         const database = getDatabase(firebase);
@@ -134,7 +124,6 @@ const AllView = () => {
                         value={userInput}
                     />
                     <button type='submit'>Add a Med!</button>
-
                 </div>
             </form>
 
@@ -146,9 +135,6 @@ const AllView = () => {
                     pastDates.map( (day, index) => {
                         /* mdn to get month and day of the week: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString */
                         const dayArray = day.toDateString().split(' ');
-                        // const dayString = `${dayArray[0]} ${dayArray[1]} ${dayArray[2]}`
-                        // console.log('full ',day)
-                        // console.log('short ', day.toDateString())
 
                         return (
                             /* different class to indicate today column better */
@@ -210,17 +196,13 @@ const AllView = () => {
                                                 }
                                             </li>
                                         )
-
                                     }
-
                                 })
                             }
                         </ul>
                     )
                 })}
-
             </div>
-
         </div>
     )
 }
