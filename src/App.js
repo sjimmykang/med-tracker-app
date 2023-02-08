@@ -1,4 +1,10 @@
-import logo from './logo.svg';
+/* Modules */
+import { Routes, Route } from 'react-router-dom';
+/* Components */
+import AllView from './Components/AllView';
+import ErrorPage from './Components/ErrorPage';
+import Medicine from './Components/Medicine';
+/* Assets */
 import './App.css';
 
 function App() {
@@ -23,7 +29,7 @@ function App() {
             </Routes>
 
             <footer>
-                <p>created in 2023 by Jimmy Kang</p>
+          <p>Created at Juno College in 2023 by Jimmy Kang</p>
             </footer>
         </div>
     );
