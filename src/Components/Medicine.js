@@ -3,10 +3,9 @@ import { useState, useEffect } from 'react';
 import firebase from '../firebase';
 import { getDatabase, get, ref, update } from 'firebase/database';
 
-const Medicine = ({ handleTaken }) => {
+const Medicine = () => {
     const { medKey } = useParams();
     const [med, setMed] = useState({});
-    const { name, datesShort, datesFull } = med;
     
     /* info to use firebase get function from: https://stackoverflow.com/questions/71244451/angular-returning-a-value-from-onvalue-in-firebase-realtime-database */
     const getOneMed = async () => {
@@ -18,13 +17,13 @@ const Medicine = ({ handleTaken }) => {
     const handleRemoveDate = index => {
         const database = getDatabase(firebase);
         const dbRef = ref(database, `${medKey}`);
-        // setMed(oneMed.val());
-        // console.log(oneMed.val().datesShort[1])
         const updates = {};
         updates.datesFull = [...med.datesFull];
         updates.datesFull.splice(index, 1);
         updates.datesShort = [...med.datesShort];
         updates.datesShort.splice(index, 1);
+        updates.datesTime = [...med.datesTime];
+        updates.datesTime.splice(index, 1);
 
         update(dbRef, updates).then(() => {
             console.log("Data updated");
@@ -39,12 +38,14 @@ const Medicine = ({ handleTaken }) => {
         const getMedDetail = async () => {
             const database = getDatabase(firebase);
             const oneMed = await get(ref(database, `${medKey}`));
+            // console.log(oneMed);
             setMed(oneMed.val());
         }
         
         getMedDetail();
     }, [medKey]);
 
+    const { name, datesShort } = med;
 
 
     if (datesShort) {        
@@ -54,10 +55,10 @@ const Medicine = ({ handleTaken }) => {
                     <h3>Dates medicine was taken</h3>
                     <ul>
                         {
-                            datesFull.map((day, index) => {
+                            datesShort.map((day, index) => {
                                 return(
                                 <li key={`${day}-${index}`}>
-                                    {day}
+                                        <p>{day} {med.datesTime}</p>
                                         <button onClick={() => handleRemoveDate(index)}>Remove this date</button>
                                 </li>
                                 )

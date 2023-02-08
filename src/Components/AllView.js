@@ -33,6 +33,7 @@ const AllView = () => {
         const todayFull = new Date();
         // console.log(todayFull)
         const todayShort = todayFull.toDateString();
+        const todayTime = todayFull.toLocaleTimeString();
 
         // const full = med.datesFull.unshift(todayFull);
         // const short = med.datesShort.unshift(todayShort);
@@ -41,6 +42,8 @@ const AllView = () => {
         updates.datesFull.unshift(todayFull);
         updates.datesShort = [...med.datesShort];
         updates.datesShort.unshift(todayShort);
+        updates.datesTime = [...med.datesTime];
+        updates.datesTime.unshift(todayTime);
         // console.log(updates.datesFull);
         // console.log(updates.datesShort);
         // console.log(med)
@@ -99,22 +102,22 @@ const AllView = () => {
                     newState.push({ 
                         key: key, 
                         name: data[key].name, 
-                        datesFull: [], datesShort: [] 
+                        datesFull: [], 
+                        datesShort: [],
+                        datesTime: []
                     })
                 } else {
                     newState.push({ 
                         key: key, 
                         name: data[key].name, 
                         datesFull: data[key].datesFull, 
-                        datesShort: data[key].datesShort 
+                        datesShort: data[key].datesShort,
+                        datesTime:  data[key].datesTime
                     })
 
                 }
                 
             }
-            // set state to match the medicine array
-            // console.log('newState ', newState)
-            // console.log(newState);
             setMeds(newState);
         })
     }, []);
@@ -123,24 +126,27 @@ const AllView = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='medicine'>Add a new medicine to track</label>
+                <div className='inputContainer'>
+                    <input
+                        onChange={handleInputChange}
+                        type='text'
+                        id='medicine'
+                        value={userInput}
+                    />
+                    <button type='submit'>Add a Med!</button>
 
-                <input
-                    onChange={handleInputChange}
-                    type='text'
-                    id='medicine'
-                    value={userInput}
-                />
-                <button type='submit'>Add a Med!</button>
+                </div>
             </form>
 
             <h2>Quick View</h2>
+            {/* ol for the past dates to display */}
             <ol className='quickview'>
-                <li className='quickview'>Dates</li>
+                <li className='sectionHeadings'>Dates</li>
                 {
                     pastDates.map( day => {
                         /* mdn to get month and day of the week: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString */
                         const dayArray = day.toDateString().split(' ');
-                        const dayString = `${dayArray[0]} ${dayArray[1]} ${dayArray[2]}`
+                        // const dayString = `${dayArray[0]} ${dayArray[1]} ${dayArray[2]}`
                         // console.log('full ',day)
                         // console.log('short ', day.toDateString())
 
@@ -148,9 +154,10 @@ const AllView = () => {
                             /* different class to indicate today column better */
                             <li 
                                 key={`pastDates-${pastDates.indexOf(day)}`}
-                                className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? 'today' : null}    
+                                className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? 'today singles' : 'singles'}    
                             >
-                                {dayString}
+                                <p>{dayArray[0]}</p>
+                                <p>{`${dayArray[1]} ${dayArray[2]}`}</p>
                             </li>
                         )
                     })
@@ -162,8 +169,8 @@ const AllView = () => {
                 {meds.map(med => {
                     return (
                         <ul key={`med-${med.key}`} className='quickview'>
-                            <li key={med.key}>
-                                <Link to={`/medicine/${med.key}`} handleTaken={handleTaken} med={med} >
+                            <li className='sectionHeadings' key={med.key}>
+                                <Link to={`/medicine/${med.key}`} >
                                     <p>{med.name}</p>
                                 </Link>
                                 <button onClick={() => handleRemoveMed(med.key)} className='red-text'>
@@ -173,30 +180,17 @@ const AllView = () => {
                             {
                                 pastDates.map( day => {
                                     const thisDay = day.toDateString();
-                                    // console.log(med)
                                     let dayCheck = -1;
-                                    // console.log(med)
                                     if (med.datesShort.indexOf(thisDay) !== undefined) {
                                         dayCheck = (med.datesShort.indexOf(thisDay));
                                     }
-                                    // console.log(dayCheck !== -1);
-                                    // console.log('full: ',med.datesFull)
-                                    // console.log('short- ', med.datesShort)
-                                    // console.log(med.datesFull[dayCheck])
                                     
                                     if (pastDates.indexOf(day) === (pastDates.length - 1)) {
                                         return (
-                                            <li key={`med-pastDates-${pastDates.indexOf(day)}`} className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? 'today' : null}>
-                                                {/* {
-                                                   
-                                                        <button onClick={() => handleTaken(med)}>
-                                                            <p className='sr-only'>click if taken</p>
-                                                            taken?
-                                                        </button>
-                                                } */}
+                                            <li key={`med-pastDates-${pastDates.indexOf(day)}`} className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? 'today singles' : 'singles'}>
                                                 {
                                                     (dayCheck !== -1) ?
-                                                        <p>yeah</p>
+                                                        <p>{med.datesTime}</p>
                                                         :
                                                         <button onClick={() => handleTaken(med)}>
                                                             <p className='sr-only'>click if taken</p>
@@ -207,11 +201,11 @@ const AllView = () => {
                                         )
                                     } else {
                                         return (
-                                            <li key={`med-pastDates-${pastDates.indexOf(day)}`}>
+                                            <li className='singles' key={`med-pastDates-${pastDates.indexOf(day)}`}>
                                                 {
                                                     (dayCheck !== -1) ? 
-                                                        <p>yes</p> :
-                                                        <p>nada</p>
+                                                        <p>{med.datesTime}</p> :
+                                                        <p></p>
                                                 }
                                             </li>
                                         )
