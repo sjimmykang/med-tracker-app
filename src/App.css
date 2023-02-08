@@ -62,20 +62,55 @@ body {
 
 /* End of basic styling */
 
+/* Error Page Styling */
 .errorPageLink {
   display: flex;
   justify-content: center;
 }
 
 .errorPageLink h2 {
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid black;
   transition: border-bottom 0.4s;
 }
 
 .errorPageLink h2:hover,
 .errorPageLink h2:focus {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #007BFF;
 }
+
+/* Medicine Page styling */
+
+.fa-clock {
+  font-size: 0.85rem;
+}
+
+.medPageLink {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  margin: 2rem 0 1rem auto;
+  justify-content: flex-end;
+}
+
+.medPageLink h2 {
+  border-bottom: 2px solid black;
+  transition: border-bottom 0.4s;
+}
+
+.medPageLink h2:hover,
+.medPageLink h2:focus {
+  border-bottom: 2px solid #007BFF;
+}
+
+h3 {
+  margin: 1rem 0;
+}
+
+.removeDateButton {
+  margin: 2rem 0 1rem 0;
+}
+
+/* AllView styling */
 
 h1 {
   font-size: 3rem;
@@ -211,7 +246,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 0.5rem auto;
+  margin-bottom: 0.6rem;
   transition: all 0.4s;
   -webkit-box-shadow: 3px 3px 1px 1px transparent;
   box-shadow: 3px 3px 1px 1px transparent;

@@ -1,12 +1,19 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
+/* Modules */
+
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import firebase from '../firebase';
 import { getDatabase, get, ref, update } from 'firebase/database';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-regular-svg-icons'
+/* Components */
+/* Assets */
+import firebase from '../firebase';
 
 const Medicine = (props) => {
     const { medKey } = useParams();
     const [med, setMed] = useState({});
     const { name, datesShort } = med;
+
     
     /* info to use firebase get function from: https://stackoverflow.com/questions/71244451/angular-returning-a-value-from-onvalue-in-firebase-realtime-database */
     const getOneMed = async () => {
@@ -56,15 +63,15 @@ const Medicine = (props) => {
                             datesShort.map((day, index) => {
                                 return(
                                 <li key={`${day}-${index}`}>
-                                    <p>{day} {med.datesTime}</p>
-                                    <button onClick={() => handleRemoveDate(index)}>Remove this date</button>
+                                        <p><FontAwesomeIcon icon={faClock} /> {day} {med.datesTime}</p>
+                                    <button onClick={() => handleRemoveDate(index)} className='removeDateButton' >Remove this date</button>
                                 </li>
                                 )
                             })
                         }
                     </ul>
         
-                    <Link to='/'>
+                    <Link to='/' className='medPageLink' >
                         <h2>BACK</h2>
                     </Link>
                 </div>
