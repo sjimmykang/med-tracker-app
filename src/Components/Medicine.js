@@ -84,7 +84,7 @@ const Medicine = (props) => {
                 <h3>Dates medicine was taken</h3>
                 <h4>No Dates Found</h4>
                 
-                <Link to='/'>
+                <Link to='/' className='medPageLink'>
                     <h2>BACK</h2>
                 </Link>
             </div>
