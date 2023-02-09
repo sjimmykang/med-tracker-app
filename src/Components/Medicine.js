@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getDatabase, get, ref, update } from 'firebase/database';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/free-regular-svg-icons'
+import { faClock } from '@fortawesome/free-regular-svg-icons';
 /* Components */
 /* Assets */
 import firebase from '../firebase';

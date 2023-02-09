@@ -6,6 +6,7 @@ import ErrorPage from './Components/ErrorPage';
 import Medicine from './Components/Medicine';
 /* Assets */
 import './App.css';
+import {default as github } from './github.svg'
 
 function App() {
     return (
@@ -27,7 +28,7 @@ function App() {
             </Routes>
 
             <footer>
-          <p>Created at <a href='https://junocollege.com/'>Juno College</a> in 2023 by Jimmy Kang</p>
+                <p>Created at <a className='junoCollege' href='https://junocollege.com/'>Juno College</a> in 2023 by Jimmy Kang <a href='https://github.com/sjimmykang'><img src={github} alt='Link to my github profile' className='gitHubIcon' /></a></p>
             </footer>
         </div>
     );
