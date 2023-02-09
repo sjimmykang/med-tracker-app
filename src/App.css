@@ -212,6 +212,10 @@ a {
   color: red;
 }
 
+.removeMedButton {
+  width: 100%;
+}
+
 .quickview {
   display: flex;
   flex-direction: row;

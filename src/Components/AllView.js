@@ -164,7 +164,7 @@ const AllView = () => {
                                 <Link to={`/medicine/${med.key}`} >
                                     <p>{med.name}</p>
                                 </Link>
-                                <button onClick={() => handleRemoveMed(med.key)} className='red-text'>
+                                <button onClick={() => handleRemoveMed(med.key)} className='red-text removeMedButton'>
                                     Remove Med
                                 </button>
                             </li>
