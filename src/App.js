@@ -28,7 +28,10 @@ function App() {
             </Routes>
 
             <footer>
-                <p>Created at <a className='junoCollege' href='https://junocollege.com/'>Juno College</a> in 2023 by Jimmy Kang <a href='https://github.com/sjimmykang'><img src={github} alt='Link to my github profile' className='gitHubIcon' /></a></p>
+                <p>
+                    Created at <a className='junoCollege' href='https://junocollege.com/'>Juno College</a> in 2023 by Jimmy Kang
+                </p> 
+                <a href='https://github.com/sjimmykang'><img src={github} alt='Link to my github profile' className='gitHubIcon' /></a>
             </footer>
         </div>
     );
