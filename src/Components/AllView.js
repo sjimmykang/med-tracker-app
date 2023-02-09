@@ -183,7 +183,7 @@ const AllView = () => {
                                                     (dayCheck !== -1) ?
                                                         <p>{med.datesTime}</p>
                                                         :
-                                                        <button onClick={() => handleTaken(med)}>
+                                                        <button onClick={() => handleTaken(med)} className='takenButton'>
                                                             <p className='sr-only'>click if taken</p>
                                                             taken?
                                                         </button>
@@ -192,7 +192,7 @@ const AllView = () => {
                                         )
                                     } else {
                                         return (
-                                            <li className='singles' key={`med-pastDates-${pastDates.indexOf(day)}`}>
+                                            <li className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? `pastday${index} today singles` : `pastday${index} singles`} key={`med-pastDates-${pastDates.indexOf(day)}`}>
                                                 {
                                                     (dayCheck !== -1) ? 
                                                         <p>{med.datesTime}</p> :

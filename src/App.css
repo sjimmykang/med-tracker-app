@@ -194,6 +194,12 @@ a {
   color: black;
 }
 
+.singles {
+  padding: 2%;
+  width: 15%;
+  text-align: center;
+}
+
 .allView {
   margin-bottom: 3rem;
 }
@@ -205,11 +211,16 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 20%;
 }
 
 .red-text {
   font-size: 1rem;
   color: red;
+}
+
+.takenButton {
+  width: 100%;
 }
 
 .removeMedButton {
@@ -227,12 +238,6 @@ a {
 .med-quickview {
   display: flex;
   flex-direction: column;
-}
-
-.singles {
-  padding: 2%;
-  width: 15%;
-  text-align: center;
 }
 
 .sectionHeadings {
@@ -318,6 +323,14 @@ footer p {
     font-size: 1.3rem;
   }
 
+  
+  .today {
+    width: 30%;
+  }
+  
+  .sectionHeadings {
+    width: 30%;
+  }
   .pastday0,
   .pastday1 {
     display: none;
