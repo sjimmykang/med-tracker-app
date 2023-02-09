@@ -127,7 +127,7 @@ const AllView = () => {
                         id='medicine'
                         value={userInput}
                     />
-                    <button type='submit'>Add a Med!</button>
+                    <button type='submit'>Add a Med</button>
                 </div>
             </form>
 

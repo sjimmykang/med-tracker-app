@@ -358,6 +358,20 @@ footer p {
   }
 }
 
+@media (max-width: 500px) {
+  .inputContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .inputContainer button {
+    width: 70%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    
+  }
+}
+
 @media (max-width: 450px) {
   .pastday2 {
     display: none;
