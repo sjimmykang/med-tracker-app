@@ -178,7 +178,7 @@ const AllView = () => {
                                     }
                                     
                                     if (pastDates.indexOf(day) === (pastDates.length - 1)) {
-                                        console.log(med)
+                                        // console.log(med)
                                         return (
                                             <li key={`med-pastDates-${pastDates.indexOf(day)}`} className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? `pastday${index} today singles` : `pastday${index} singles`}>
                                                 {
@@ -197,7 +197,10 @@ const AllView = () => {
                                             <li className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? `pastday${index} today singles` : `pastday${index} singles`} key={`med-pastDates-${pastDates.indexOf(day)}`}>
                                                 {
                                                     (dayCheck !== -1) ? 
-                                                        <p>{med.datesTime[index]}</p> :
+                                                    <>
+                                                        <p>{med.datesTime[index - 1]}</p>
+                                                        {console.log(med.name , med.datesTime, index)}
+                                                    </> :
                                                         <p></p>
                                                 }
                                             </li>
