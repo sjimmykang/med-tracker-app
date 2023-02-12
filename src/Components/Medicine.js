@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import { getDatabase, get, ref, update } from 'firebase/database';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
-import AppContext from './MedContext';
-import React, { useContext } from 'react';
+// import AppContext from './MedContext';
+// import React, { useContext } from 'react';
 /* Components */
 /* Assets */
 import firebase from '../firebase';
@@ -16,7 +16,7 @@ const Medicine = (props) => {
     const [med, setMed] = useState({});
     const { name, datesShort } = med;
     // const { testState } = useContext(AppContext);
-    const tester = useContext(AppContext);
+    // const tester = useContext(AppContext);
     
     /* info to use firebase get function from: https://stackoverflow.com/questions/71244451/angular-returning-a-value-from-onvalue-in-firebase-realtime-database */
     const getOneMed = async () => {
@@ -52,7 +52,7 @@ const Medicine = (props) => {
             // console.log(oneMed.val());
             // (oneMed.val()) ? setMed(oneMed.val()) : <Redirect to='/Error' />;
             setMed(oneMed.val());
-            console.log('tester:  ', tester);
+            // console.log('tester:  ', tester);
         }
         getMedDetail();
     }, [medKey]);
