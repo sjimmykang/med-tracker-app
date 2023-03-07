@@ -139,6 +139,7 @@ const AllView = () => {
                     pastDates.map( (day, index) => {
                         /* mdn to get month and day of the week: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString */
                         const dayArray = day.toDateString().split(' ');
+                        // console.log(dayArray);
 
                         return (
                             /* different class to indicate today column better */
@@ -177,11 +178,12 @@ const AllView = () => {
                                     }
                                     
                                     if (pastDates.indexOf(day) === (pastDates.length - 1)) {
+                                        // console.log(med)
                                         return (
                                             <li key={`med-pastDates-${pastDates.indexOf(day)}`} className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? `pastday${index} today singles` : `pastday${index} singles`}>
                                                 {
                                                     (dayCheck !== -1) ?
-                                                        <p>{med.datesTime}</p>
+                                                        <p>{med.datesTime[0]}</p>
                                                         :
                                                         <button onClick={() => handleTaken(med)} className='takenButton'>
                                                             <p className='sr-only'>click if taken</p>
@@ -195,7 +197,10 @@ const AllView = () => {
                                             <li className={(pastDates.indexOf(day) === (pastDates.length - 1)) ? `pastday${index} today singles` : `pastday${index} singles`} key={`med-pastDates-${pastDates.indexOf(day)}`}>
                                                 {
                                                     (dayCheck !== -1) ? 
-                                                        <p>{med.datesTime}</p> :
+                                                    <>
+                                                        <p>{med.datesTime[index - 1]}</p>
+                                                        {console.log(med.name , med.datesTime, index)}
+                                                    </> :
                                                         <p></p>
                                                 }
                                             </li>
